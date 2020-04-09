@@ -9,6 +9,8 @@ namespace App\Models;
 
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\NovelAdv\AccountManage;
+
 
 class RoleUser extends Model
 {
@@ -21,4 +23,8 @@ class RoleUser extends Model
     public function adminUsers(){
         return $this->hasOne(AdminUsers::class,'id','user_id');
     }
+    public function hasManyAccountManage(){
+        return $this->hasMany(AccountManage::class,'user_id','user_id');
+    }
+
 }

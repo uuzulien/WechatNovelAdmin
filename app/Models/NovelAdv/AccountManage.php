@@ -3,8 +3,10 @@
 namespace App\Models\NovelAdv;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\NovelAdv\PlatformManage;
 use App\Models\AdminUsers;
+use App\Models\GroupUsers;
+use Illuminate\Support\Facades\Auth;
+
 class AccountManage extends Model
 {
     protected $connection = 'admin';
@@ -41,6 +43,8 @@ class AccountManage extends Model
 
         $query = self::with(['hasOneUser','hasBelongsToAccountAdv']);
 
+        $groups = (new GroupUsers())->where('group_id', Auth::id())->get()->pluck('user_id')->push(Auth::id()); // 小组临时权限控制
+
         $list = $query->when($platform_name, function ($q) use($platform_name) {
                    $q->where('platform_name', $platform_name);
                 })->when($account, function ($q) use($account) {
@@ -50,9 +54,11 @@ class AccountManage extends Model
                 })->when($status, function ($q) use($status) {
                     $q->where('status', $status);
                 })->when($type, function ($q) use($type) {
-                    $q->whereHas('hasBelongsToAccountAdv', function ($q) use($type){$q->where('type',$type);});
-                })->orderBy('created_at', 'asc')->paginate(15);
+                    $q->whereHas('hasBelongsToAccountAdv', function ($q) use($type) {$q->where('type',$type);});
+                })->when(Auth::id()!= 1,function ($q) use($groups) {$q->whereIn('user_id', $groups);})->orderBy('created_at', 'asc')->paginate(15);
 
-        return compact('list');
+        $platforms = (new PlatformManage())->where('type', '1')->get(['id','platform_name']);
+
+        return compact('list', 'platforms');
     }
 }

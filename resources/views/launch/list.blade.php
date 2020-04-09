@@ -14,7 +14,7 @@
             </button>
 
         </h2>
-        @include('novel.add-account')
+        @include('launch.add-account')
 
     </div>
 @endsection

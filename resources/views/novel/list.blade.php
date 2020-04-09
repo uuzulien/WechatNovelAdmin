@@ -38,7 +38,9 @@
                             <label>平台:
                                 <select id="select-id" class="compensatory-style pay_status_style" autocomplete="off" name="pt_type">
                                     <option value="0" >所有平台</option>
-                                    <option value="1" >掌读</option>
+                                    @foreach($platforms as $item)
+                                        <option value="{{$item->id}}" @if(request()->get('pt_type')==$item->id) selected @endif>{{$item->platform_name}}</option>
+                                    @endforeach
                                 </select>
                             </label>
                             <label>账户状态:
@@ -81,7 +83,7 @@
                                     <td>{{ $item['created_at']}}</td>
                                     <td>{{ $item['updated_at'] }}</td>
                                     <td>
-                                        <a href="">
+                                        <a href="javascript:void(0);">
                                         <span class="btn btn-sm btn-info">
                                         查看详情
                                         </span>

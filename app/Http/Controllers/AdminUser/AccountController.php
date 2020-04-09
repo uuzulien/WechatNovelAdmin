@@ -12,6 +12,7 @@ namespace App\Http\Controllers\AdminUser;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use App\Repositories\Auth\UserPermission;
@@ -116,6 +117,7 @@ class AccountController extends Controller
             $id = $request->input('id');
             $name = $request->input('name');
             $email = $request->input('email');
+            $roles = $request->input('roles',null);
             $password = $request->input('password');
             if ($id > 0) {
                 $name_exist = AdminUsers::where('id', '!=', $id)->where('name', $name)->first() && true;
@@ -134,13 +136,19 @@ class AccountController extends Controller
             }
             $user->name = $name;
             $user->email = $email;
+            $user->role_id = $roles;
             $user->save();
+            $id = $user->id;
+            DB::connection('admin')->table('group_users')->insert([
+                'user_id' => $user->id,
+                'group_id' => Auth::id()
+            ]);
             if ($id > 0) {
                 AdminLogHandle::write('编辑用户');
             } else {
                 AdminLogHandle::write('添加用户');
             }
-            $userPermission->saveUserRole($user, $request->input('roles'));
+            $userPermission->saveSingleUserRole($user, $roles);
             return redirect('admin_user/list');
         } catch (\Exception $e) {
             $error = $e->getCode() == 4002 ? json_decode($e->getMessage()) : $e->getMessage();

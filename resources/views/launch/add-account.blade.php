@@ -31,34 +31,10 @@
                                                     请选择
                                                 </option>
                                                 <option value="1">
-                                                    掌读
+                                                    巨量引擎
                                                 </option>
                                                 <option value="2">
-                                                    掌中云
-                                                </option>
-                                                <option value="3">
-                                                    网易
-                                                </option>
-                                                <option value="4">
-                                                    火烧云
-                                                </option>
-                                                <option value="5">
-                                                    阳光书城
-                                                </option>
-                                                <option value="7">
-                                                    掌文
-                                                </option>
-                                                <option value="8">
-                                                    追书云
-                                                </option>
-                                                <option value="6">
-                                                    滕文
-                                                </option>
-                                                <option value="9">
-                                                    文鼎
-                                                </option>
-                                                <option value="10">
-                                                    七悦文学
+                                                    其它
                                                 </option>
                                             </select>
                                         </div>
@@ -81,13 +57,13 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                    <div class="col-sm-offset-2 col-sm-10">
-{{--                                        <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>--}}
+                                        <div class="col-sm-offset-2 col-sm-10">
+                                            {{--                                        <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>--}}
 
-                                        <button type="submit" class="btn btn-info" lay-submit lay-filter="formDemo">
-                                            提交
-                                        </button>
-                                    </div>
+                                            <button type="submit" class="btn btn-info" lay-submit lay-filter="formDemo">
+                                                提交
+                                            </button>
+                                        </div>
                                     </div>
                                 </form>
                             </div>
@@ -96,13 +72,13 @@
                 </div>
                 <span class="layui-layer-setwin">
 {{--                    <a class="layui-layer-min" href="javascript:;">--}}
-{{--                        <cite>--}}
-{{--                        </cite>--}}
-{{--                    </a>--}}
-{{--                    <a class="layui-layer-ico layui-layer-max" href="javascript:;">--}}
-{{--                    </a>--}}
-{{--                    <a class="layui-layer-ico layui-layer-close layui-layer-close1" href="javascript:;" data-dismiss="modal" lay-filter="formDemo">--}}
-{{--                    </a>--}}
+                    {{--                        <cite>--}}
+                    {{--                        </cite>--}}
+                    {{--                    </a>--}}
+                    {{--                    <a class="layui-layer-ico layui-layer-max" href="javascript:;">--}}
+                    {{--                    </a>--}}
+                    {{--                    <a class="layui-layer-ico layui-layer-close layui-layer-close1" href="javascript:;" data-dismiss="modal" lay-filter="formDemo">--}}
+                    {{--                    </a>--}}
                 </span>
                 <span class="layui-layer-resize">
                 </span>

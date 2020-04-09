@@ -19,7 +19,6 @@
     <script type="text/javascript" src="{{ asset('js/plugins/jquery/jquery-ui.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/plugins/bootstrap/bootstrap.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('layer/layer.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('layui/layui.js') }}"></script>
     <!-- END PLUGINS -->
     @yield('css')
 </head>

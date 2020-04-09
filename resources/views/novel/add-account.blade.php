@@ -30,36 +30,9 @@
                                                 <option value="0">
                                                     请选择
                                                 </option>
-                                                <option value="1">
-                                                    掌读
-                                                </option>
-                                                <option value="2">
-                                                    掌中云
-                                                </option>
-                                                <option value="3">
-                                                    网易
-                                                </option>
-                                                <option value="4">
-                                                    火烧云
-                                                </option>
-                                                <option value="5">
-                                                    阳光书城
-                                                </option>
-                                                <option value="7">
-                                                    掌文
-                                                </option>
-                                                <option value="8">
-                                                    追书云
-                                                </option>
-                                                <option value="6">
-                                                    滕文
-                                                </option>
-                                                <option value="9">
-                                                    文鼎
-                                                </option>
-                                                <option value="10">
-                                                    七悦文学
-                                                </option>
+                                                @foreach($platforms as $item)
+                                                    <option value="{{$item->id}}" @if(request()->get('pt_type')==$item->id) selected @endif>{{$item->platform_name}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>

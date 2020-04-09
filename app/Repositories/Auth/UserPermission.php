@@ -63,4 +63,9 @@ class UserPermission
         }
         return true;
     }
+
+    public function saveSingleUserRole($user,$role_ids){
+        $user->roles()->sync($role_ids);
+        return true;
+    }
 }

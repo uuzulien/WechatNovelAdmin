@@ -44,10 +44,56 @@ Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], function () {
     Route::put('/permissions_role_save', 'PermissionController@permissionsRoleSave')->name('auth.permissions_role_save');
 });
 
-Route::group(['prefix' => 'account', 'namespace' => 'Novel'], function () {
+Route::group(['prefix' => 'account', 'namespace' => 'Account'], function () {
     // 小说平台账户配置列表
-    Route::get('/novel_configs', 'NovelAccountController@index')->name('account.novel_list');
-    Route::post('/add_novel', 'NovelAccountController@addAccount')->name('account.add_novel');
+    Route::get('/novel_configs', 'NovelController@index')->name('account.novel_list');
+    Route::post('/add_novel', 'NovelController@addAccount')->name('account.add_novel');
     // 投放平台账户配置列表
-    Route::get('/launch_configs', 'AdvertAccountController@index')->name('account.adv_list');
+    Route::get('/launch_configs', 'AdvertController@index')->name('account.adv_list');
+});
+
+// 数据分析
+Route::group(['prefix' => 'data_analyst', 'namespace' => 'Analyze'], function () {
+    // 小说数据
+    Route::get('/novel_list', 'NovelController@index')->name('analyst.novel_list');
+
+    // 投放数据分析
+    Route::get('/launch_list', 'AdvertController@index')->name('analyst.adv_list');
+
+    // 成本数据分析
+    Route::get('/cost_list', 'AdvertController@showCostList')->name('analyst.cost_list');
+
+});
+// 数据管理
+Route::group(['prefix' => 'datas_collect', 'namespace' => 'Datas'], function () {
+    // 小说数据
+    Route::get('/novel_list', 'NovelController@index')->name('datas.novel_list');
+    Route::get('/novel_list/orders', 'NovelController@showBookIdOrdersList')->name('datas.bookid.order_list');
+    // 手动添加推广成本
+    Route::get('/novel_list/orders', 'NovelConnovel_listtroller@showBookIdOrdersList')->name('datas.bookid.order_list');
+
+    // 投放数据分析
+    Route::post('/launch/add_money', 'AdvertController@addMoney')->name('datas.adv.add_money');
+
+    // 订单数据明细
+    Route::get('/orders_list', 'NovelController@showOrdersList')->name('datas.order_list');
+
+
+});
+
+// 采集管理
+Route::group(['prefix' => 'spy','namespace' => 'SeekData'], function () {
+    // 基础配置
+    Route::get('config/index', 'Web\ConfigController@index')->name('spy.config.index');
+    // 配置清单
+    Route::get('config/list', 'Web\ConfigController@showConfigList')->name('spy.config.list');
+    // 添加配置
+    Route::post('config/add', 'Web\ConfigController@configAdd')->name('spy.config.add');
+
+    // 计划任务
+    Route::get('task/scheduler', 'Web\TaskPlanController@index')->name('spy.task.index');
+    // 任务列表
+    Route::get('task/list', 'Web\TaskPlanController@taskPlanList')->name('spy.task.list');
+    // 添加任务
+    Route::post('task/add', 'Web\TaskPlanController@taskPlanAdd')->name('spy.task.add');
 });

@@ -11,27 +11,27 @@
     @endif
 @endsection
 @section('css')
-<style type="text/css">
-    .panel-heading {
-        height: 70px;
-    }
-    .panel-footer {
-        height: 50px;
-    }
-</style>
+    <style type="text/css">
+        .panel-heading {
+            height: 70px;
+        }
+        .panel-footer {
+            height: 50px;
+        }
+    </style>
 @endsection
 @section('pageTitle')
 @endsection
 @section('content')
-    @if (count($errors) > 0)
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+{{--    @if (count($errors) > 0)--}}
+{{--        <div class="alert alert-danger">--}}
+{{--            <ul>--}}
+{{--                @foreach ($errors->all() as $error)--}}
+{{--                    <li>{{ $error }}</li>--}}
+{{--                @endforeach--}}
+{{--            </ul>--}}
+{{--        </div>--}}
+{{--    @endif--}}
     <div class="row">
         <div class="col-md-12">
 
@@ -58,7 +58,7 @@
                                     <p class="form-control-static">{{ $data->name }}</p>
                                 </div>
                             </div>
-                            @else
+                        @else
                             <div class="form-group">
                                 <label class="col-md-3 col-xs-12 control-label">用户名</label>
                                 <div class="col-md-6 col-xs-12">
@@ -85,7 +85,7 @@
                             <label class="col-md-3 col-xs-12 control-label">角色</label>
                             <div class="col-md-6 col-xs-12">
                                 @foreach($roles as $role)
-                                    <input type="checkbox" name="roles[]" value="{{$role->id}}" @if($user_role->contains($role->id)) checked @endif >{{$role->name}}<br>
+                                    <input type="radio" name="roles" value="{{$role->id}}" @if($user_role->contains($role->id)) checked @endif >  {{$role->name}}<br>
                                 @endforeach
                             </div>
                         </div>

@@ -41,8 +41,18 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapPublicRoutes();
 
+        $this->mapSeekRoutes();
+
     }
 
+    /**
+     * 定义爬虫路由
+     */
+    protected function mapSeekRoutes()
+    {
+        Route::namespace($this->namespace)
+            ->group(base_path('routes/seek.php'));
+    }
 
     /**
      * 定义公共路由
