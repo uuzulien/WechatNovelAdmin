@@ -16,7 +16,7 @@ class AccountController extends Controller
      * @param Request $request
      * @return mixed\
      */
-    public function getConfigs(Request $request)
+    public function getAccountConfigs(Request $request)
     {
         $user_id = $request->input('user_id');
         $query = new AccountManage();
@@ -28,6 +28,7 @@ class AccountController extends Controller
         return success($data);
     }
 
+    // 获取所有的keys,跳过重复的key
     public function getKeyExist(Request $request)
     {
         $action = $request->input('action');
@@ -53,6 +54,7 @@ class AccountController extends Controller
         }
 
         return success($data);
-
     }
+
+
 }

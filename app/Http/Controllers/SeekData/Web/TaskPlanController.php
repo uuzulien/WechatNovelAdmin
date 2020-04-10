@@ -5,6 +5,7 @@ namespace App\Http\Controllers\SeekData\Web;
 
 
 use App\Http\Controllers\Controller;
+use App\Models\NovelAdv\PlatformManage;
 use App\Models\RoleUser;
 use App\Models\Task\TaskList;
 use Illuminate\Http\Request;
@@ -12,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\NovelAdv\AccountManage;
 use App\Repositories\Auth\GroupPermission;
+use function foo\func;
 
 
 class TaskPlanController extends Controller
@@ -20,9 +22,17 @@ class TaskPlanController extends Controller
     public function index(GroupPermission $groupPermission)
     {
         $userGroup = $groupPermission->userGroup();
-        $data = AccountManage::query()->whereIn('user_id', $userGroup)->get(['id','platform_nick']);
+        $pf_name = AccountManage::query()->whereIn('user_id', $userGroup)->get(['id','platform_nick']);
+        $platforms = PlatformManage::query()->with(['hasManyTaskConfigList'])->select(['id','platform_name'])->orderBy('id','ASC')->get()->map(function($value) {
+            $item['id'] = $value->id;
+            $item['platform_name'] = $value->platform_name;
+            $tid = $value->hasManyTaskConfigList->pluck('id');
+            $t_name = $value->hasManyTaskConfigList->pluck('name');
+            $item['config'] = $tid->combine($t_name);
+            return $item;
+        });
 
-        return view('seek.task.index',['list' => $data]);
+        return view('seek.task.index', compact('pf_name', 'platforms'));
 
     }
 

@@ -35,11 +35,13 @@
                                                 <input type="text" class="form-control" name="task_name" required>
                                             </div>
 
-                                            <label for="input002" class="col-sm-2 control-label form-label">任务类型：</label>
+                                            <label for="input002" class="col-sm-2 control-label form-label">发文公众号：</label>
                                             <div class="col-sm-2">
-                                                <select class="form-control" name="pfname">
-                                                    <option value="1">掌读</option>
-                                                    <option value="2">巨量引擎</option>
+                                                <select class="form-control" name="squad">
+                                                    <option value="0">请选择</option>
+                                                    @foreach($pf_name as $item)
+                                                        <option value="{{$item->id}}">{{$item->platform_nick}}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
@@ -58,23 +60,27 @@
                                                 <input type="number" class="form-control" name="novel_id" required>
                                             </div>
 
-                                            <label for="input002" class="col-sm-2 control-label form-label">发文公众号：</label>
+                                            <label for="input002" class="col-sm-2 control-label form-label">任务类型：</label>
                                             <div class="col-sm-2">
-                                                <select class="form-control" name="squad">
+                                                <select class="form-control" name="pf_name">
                                                     <option value="0">请选择</option>
-                                                    @foreach($list as $item)
-                                                        <option value="{{$item->id}}">{{$item->platform_nick}}</option>
+                                                @foreach($platforms as $item)
+                                                        <option value="{{$item['id']}}">{{$item['platform_name']}}</option>
                                                     @endforeach
+                                                </select>
+                                                <br>
+                                                <select class="form-control" name="pfname">
+                                                    <option value="0">请选择类型</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <br>
                                         <br>
                                         <div class="form-group">
-                                            <label for="input002" class="col-sm-2 control-label form-label">投放金额：</label>
-                                            <div class="col-sm-2">
-                                                <input type="number" class="form-control" name="stat_cost" required>
-                                            </div>
+{{--                                            <label for="input002" class="col-sm-2 control-label form-label">投放金额：</label>--}}
+{{--                                            <div class="col-sm-2">--}}
+{{--                                                <input type="number" class="form-control" name="stat_cost" required>--}}
+{{--                                            </div>--}}
                                             <label for="input002" class="col-sm-2 control-label form-label">书籍名称：</label>
                                             <div class="col-sm-2">
                                                 <input type="text" class="form-control" name="novel_name" required>
@@ -123,5 +129,31 @@
 @endsection
 
 @section('js')
+    <script>
+        let datas = @json($platforms->toArray());
+        let pfname_control = $("select[name='pf_name']");
+        let pfname_control_sub = document.querySelector("select[name='pfname']");
+
+        pfname_control.change(function () {
+            var pid = $("select[name='pf_name'] option:selected").val();
+            pfname_control_sub.innerHTML = '';
+            for(var i = 0; i < datas.length; i++) {
+                if (pid == datas[i]['id']){
+                    add_option(datas[i]['config'])
+                }
+            }
+        });
+
+        function add_option(item) {
+            for(var key in item) {
+                var query = document.createElement('option');
+                query.innerHTML = item[key];
+                query.value = key;
+                pfname_control_sub.appendChild(query)
+            }
+        }
+
+
+    </script>
 
 @endsection

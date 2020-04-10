@@ -3,7 +3,7 @@
 
 Route::group(['prefix' => 'api','namespace' => 'SeekData','middleware' => 'seek'], function () {
     // 获取小说的账户配置
-    Route::get('book/get_account', 'Api\AccountController@getConfigs')->name('api.book.get_account');
+    Route::get('book/get_account', 'Api\AccountController@getAccountConfigs')->name('api.book.get_account');
     // 获取定时任务列表
     Route::get('task/list', 'Api\TaskController@getList')->name('api.task.get_list');
     // 获取冲突的主键

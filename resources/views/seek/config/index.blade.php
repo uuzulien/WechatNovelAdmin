@@ -12,7 +12,6 @@
 @section('content')
     <div class="panel-body">
         <div role="tabpanel">
-            <form action="" method="post" class="form-horizontal">
 
                 <!-- Tab panes -->
                 <div class="tab-content" id="tab-content">
@@ -34,10 +33,10 @@
                                         <div class="form-group">
                                             <label for="input002" class="col-sm-2 control-label form-label">任务类型：</label>
                                             <div class="col-sm-2">
-                                                <select class="form-control" name="pfname">
-                                                    <option value="1">掌读</option>
-                                                    <option value="2">巨量引擎</option>
-                                                    <option value="3">阳光书城</option>
+                                                <select class="form-control" name="pf_name">
+                                                    @foreach($platforms as $item)
+                                                    <option value="{{$item->id}}">{{$item->platform_name}}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                             <span style="margin-left: 20px;line-height: 2px"><i style="color: red;margin-right:8px;">*</i> 任务类型是指具体的小说平台、投放平台</span>
@@ -49,7 +48,7 @@
                                             <label for="input002" class="col-sm-2 control-label form-label">登录配置：</label>
                                             <div class="col-sm-2">
                                                 <select class="form-control" id="form-control-one" name="squad[]">
-                                                    <option value="0">默认全部</option>
+                                                    <option value="0">请先添加</option>
                                                 </select>
 
                                             </div>
@@ -100,7 +99,7 @@
                                         <div class="form-group">
                                             <label for="input002" class="col-sm-2 control-label form-label">备注：</label>
                                             <div class="col-sm-10">
-                                                <textarea class="class-textarea" name="description" rows="6" cols="46"></textarea>
+                                                <textarea class="class-textarea description" name="description" rows="6" cols="46"></textarea>
 
                                             </div>
                                         </div>
@@ -117,7 +116,6 @@
                     </div>
 
                 </div>
-            </form>
         </div>
     </div>
 @endsection
@@ -167,8 +165,8 @@
         add_btn.onclick = function() {
             datas.push(
                 {
-                    name:'属性名',
-                    path_url:'url链接菜单'
+                    key:'属性名',
+                    val:'url链接菜单'
                 }
             );
             login_control_one.innerHTML = '';
@@ -177,8 +175,8 @@
             config_hint.style.display = 'none';
             config_text.style.display = 'block';
             show_sel = datas[sel_num];
-            menuName.value = show_sel.name;
-            urlAddress.value = show_sel.path_url;
+            menuName.value = show_sel.key;
+            urlAddress.value = show_sel.val;
             var options = document.querySelectorAll('#form-control-one option');
             options[sel_num].selected = true;
         };
@@ -186,7 +184,7 @@
         function add_option() {
             for(var i = 0; i < datas.length; i++) {
                 var node = document.createElement('option');
-                node.innerHTML = datas[i].name;
+                node.innerHTML = datas[i].key;
                 login_control_one.appendChild(node)
             }
         }
@@ -196,39 +194,40 @@
             config_text.style.display = 'block';
             sel_num = this.selectedIndex;
             show_sel = datas[sel_num];
-            menuName.value = show_sel.name;
-            urlAddress.value = show_sel.path_url;
+            menuName.value = show_sel.key;
+            urlAddress.value = show_sel.val;
         };
         menuName.onkeyup = function() {
             var options = document.querySelectorAll('#form-control-one option');
-            datas[sel_num].name = menuName.value;
+            datas[sel_num].key = menuName.value;
             options[sel_num].innerText = menuName.value
         };
         urlAddress.onkeyup = function() {
             var options = document.querySelectorAll('#form-control-one option');
-            datas[sel_num].path_url = urlAddress.value;
+            datas[sel_num].val = urlAddress.value;
         };
 
         function sumbit() {
             var task_name = $("input[name='task_name']").val(),
-                pfname = $("select[name='pfname'] option:selected").val();
+                pf_name = $("select[name='pf_name'] option:selected").val(),
+                msg = document.querySelector('.description').value;
 
             if (task_name.length === 0) {
                 alert('任务名称不能为空');
-                return false;
+                return;
             }
-            if (confirm('确定要冻结此渠道主管吗？？')) {
+            if (confirm('确定要提交本次配置吗？？')) {
                 $.ajax({
                     type: 'post',
-                    url: '',
-                    data: {id: id, explain: freeze_reason, operator: operator},
-                    success: function (msg) {
-                        console.log(msg);
-                        if (msg == 1) {
-                            alert('冻结成功');
-                            window.location.href = '';
+                    url: '{{route('spy.config.add')}}',
+                    data: {task_name: task_name, pf_name: pf_name, msg : msg, datas: datas},
+                    success: function (data) {
+                        console.log(data);
+                        if (data['code'] == 1) {
+                            alert('提交成功');
+                            // window.location.href = '';
                         } else {
-                            alert('冻结失败,请稍后重试或联系管理员!');
+                            alert('提交失败,请稍后重试或联系管理员!');
                         }
                     }
                 }).fail(function (jqXHR, textStatus) {

@@ -8,62 +8,59 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Task\TaskConfigList;
+use App\Models\Task\TaskList;
+use App\Models\NovelAdv\PlatformManage;
 
 class ConfigController extends Controller
 {
     // 基础配置页面
     public function index()
     {
-        return view('seek.config.index');
+        $platforms = PlatformManage::query()->select(['id','platform_name'])->orderBy('id','ASC')->get();
+
+        return view('seek.config.index', compact('platforms'));
     }
 
     // 配置清单页面
-    public function showConfigList()
+    public function showConfigList(TaskConfigList $taskConfigList)
     {
-        return view('seek.config.list');
+        $data = $taskConfigList->searchList();
+
+        return view('seek.config.list', $data);
     }
 
-    // 计划任务添加
+    // 基础配置添加
     public function configAdd(Request $request)
     {
-        return success($request->all());
-        try {
-            $task_name = $request->input('task_name');
-            $platform_id = $request->input('pfname');
-            $squad = $request->input('squad');
-            $description = $request->input('description');
-            $novel_name = $request->input('novel_name');
-            $novel_id = $request->input('novel_id');
-            $stat_cost = $request->input('stat_cost');
-            $key = $request->input('location');
+        $task_name = $request->input('task_name');
+        $platform_name = $request->input('pf_name');
+        $msg = $request->input('msg');
+        $datas = $request->input('datas');
 
-            if ($squad == 0) {
-                $validatorError = ['name' => '请选择发文公众号'];
-                $validatorError = json_encode($validatorError);
-                throw new \Exception($validatorError, 4002);
-            }
-            if ($key == 0) {
-                $validatorError = ['name' => '请选择采集位置'];
-                $validatorError = json_encode($validatorError);
-                throw new \Exception($validatorError, 4002);
-            }
-            DB::connection('admin')->table('task_config_list')->insert([
-                'name' => $squad,
-                'type' => $task_name,
-                'datas' => $platform_id,
-                'msg' => $key,
-                'user_id' => Auth::id()
-            ]);
-
-            flash_message('操作成功');
-            return redirect()->back();
-
-        }catch (\Exception $e){
-            $error = $e->getCode() == 4002 ? json_decode($e->getMessage()) : $e->getMessage();
-            return redirect('spy/task/scheduler')
-                ->withErrors($error)
-                ->withInput();
+        if ($datas){
+            $datas = $this->handData($datas);
         }
 
+        DB::connection('admin')->table('task_config_list')->insert([
+            'name' => $task_name,
+            'pid' => $platform_name,
+            'datas' => json_encode($datas),
+            'msg' => $msg,
+            'user_id' => Auth::id()
+        ]);
+
+        return success();
+
+    }
+
+    // 格式化数组
+    public function handData($data)
+    {
+        $dList = [];
+        foreach ($data as $item) {
+            $dList[$item['key']] = $item['val'];
+        }
+        return $dList;
     }
 }

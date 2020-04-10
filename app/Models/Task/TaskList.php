@@ -24,6 +24,10 @@ class TaskList extends Model
     {
         return $this->hasOne(AdminUsers::class, 'id', 'user_id');
     }
+    public function hasOneTaskConfigList()
+    {
+        return $this->hasOne(TaskConfigList::class, 'tid', 'id');
+    }
 
     public function getPlatformNickAttribute()
     {
@@ -67,12 +71,13 @@ class TaskList extends Model
         $status = $param['status'] ?? 0;
         $count = $param['count'] ?? 4;
 
-        $query = self::with(['hasOneAccountManage'])->orderBy('created_at', 'asc');
+        $query = self::with(['hasOneAccountManage','hasOneTaskConfigList'])->orderBy('created_at', 'asc');
         $list = $query->where(['status' => $status])->take($count)->get();
 
         $configList = [];
         foreach ($list as $key => $item){
             array_push($configList, [
+                'config_datas' => $item->hasOneTaskConfigList->datas,
                 'book_id' => $item->book_id,
                 'key' => $item->key,
                 'platform_nick' => $item->hasOneAccountManage->platform_nick ?? null,
