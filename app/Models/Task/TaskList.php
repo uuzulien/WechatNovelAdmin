@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\NovelAdv\PlatformManage;
 use App\Models\NovelAdv\AccountManage;
 use App\Models\AdminUsers;
+use App\Models\AcceptHandleLog;
 
 class TaskList extends Model
 {
@@ -26,7 +27,7 @@ class TaskList extends Model
     }
     public function hasOneTaskConfigList()
     {
-        return $this->hasOne(TaskConfigList::class, 'tid', 'id');
+        return $this->hasOne(TaskConfigList::class, 'id', 'task_config_id');
     }
 
     public function getPlatformNickAttribute()
@@ -40,6 +41,10 @@ class TaskList extends Model
     public function getUserNameAttribute()
     {
         return $this->hasOneAdminUsers->name ?? null;
+    }
+    public function getTaskConfigNameAttribute()
+    {
+        return $this->hasOneTaskConfigList->name ?? '-';
     }
 
     public function getStatusAttribute($value)
@@ -60,7 +65,7 @@ class TaskList extends Model
 
     public function searchList()
     {
-        $query = self::with(['hasOnePlatformManage','hasOneAccountManage','hasOneAdminUsers'])->orderBy('created_at', 'asc');
+        $query = self::with(['hasOnePlatformManage','hasOneAccountManage','hasOneAdminUsers','hasOneTaskConfigList'])->orderBy('created_at', 'asc');
         $list = $query->paginate(15);
         return compact('list');
     }
@@ -75,19 +80,39 @@ class TaskList extends Model
         $list = $query->where(['status' => $status])->take($count)->get();
 
         $configList = [];
+        $FunArr = array(
+                '1' => [],
+                '2' => [],
+                '3' => ['for_order_page','for_sliced_order'],
+                '4' => ['for_fens_page']
+            );
         foreach ($list as $key => $item){
-            array_push($configList, [
-                'config_datas' => $item->hasOneTaskConfigList->datas,
+            $config_data = $item->hasOneTaskConfigList->datas ?? null;
+            $data = [
+                'datas' => $config_data ? json_decode($config_data) : null,
                 'book_id' => $item->book_id,
+                'class' => $item->hasOneTaskConfigList->func ?? null,
+                'func' => $FunArr[$item->key],
                 'key' => $item->key,
                 'platform_nick' => $item->hasOneAccountManage->platform_nick ?? null,
                 'account' => $item->hasOneAccountManage->account ?? null,
                 'password' => $item->hasOneAccountManage->password ?? null,
-                'task_id' => getrandstr() . '_' . $key,
+                'run_id' => getrandstr() . '_' . $key,
+                'politic' => $item->politic,
+                'breakpoint' => $status ? $this->BreakPointAcq($item->id): null,
                 'id' => $item->id
-            ]);
+            ];
+
+            if ($config_data)
+                array_push($configList, $data);
         }
 
         return $configList;
+    }
+
+    public function BreakPointAcq($task_id)
+    {
+        $query = AcceptHandleLog::query()->where(['tid' => $task_id, 'politic' => 1])->orderBy('created_at','DESC')->pluck('breakpoint');
+        return $query->first();
     }
 }

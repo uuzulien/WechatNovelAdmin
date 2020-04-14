@@ -34,12 +34,7 @@ class TaskConfigList extends Model
     // 配置样式美化
     public function getConfigDataAttribute()
     {
-        $data = json_decode($this->datas);
-        $html = '';
-        foreach ($data as $key => $value) {
-            $html = "<span> <b style='color: red'>$key</b> ： $value </span><br>" . $html;
-        }
-        return $html;
+        return $this->datas;
     }
 
     public function searchList()

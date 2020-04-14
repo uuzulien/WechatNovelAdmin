@@ -2,18 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="81d01956-39f7-4d5c-84ff-470051b579b2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/analyze/cost_popup.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/analyze/pay_trend.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SeekData/Api/AccountController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SeekData/Api/AccountController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SeekData/Api/TaskController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SeekData/Api/TaskController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SeekData/Web/ConfigController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SeekData/Web/ConfigController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Analyze/AdvertController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Analyze/AdvertController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SeekData/Web/TaskPlanController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SeekData/Web/TaskPlanController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/NovelAdv/PlatformManage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/NovelAdv/PlatformManage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/NovelData/GrabOrdersApi.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/NovelData/GrabOrdersApi.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/NovelData/GrabOrdersPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/NovelData/GrabOrdersPage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Task/TaskConfigList.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Task/TaskConfigList.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Task/TaskList.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Task/TaskList.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/analyze/cost_list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/analyze/cost_list.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/seek/config/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/seek/config/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/seek/config/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/seek/config/list.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/seek/task/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/seek/task/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/seek/task/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/seek/task/list.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/seek.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/seek.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -205,7 +209,8 @@
       <workItem from="1585797571558" duration="19286000" />
       <workItem from="1585880157318" duration="12011000" />
       <workItem from="1586138966909" duration="21648000" />
-      <workItem from="1586227499796" duration="81042000" />
+      <workItem from="1586227499796" duration="92314000" />
+      <workItem from="1586747427519" duration="25472000" />
     </task>
     <servers />
   </component>
@@ -237,10 +242,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="644" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585131347114" />
-    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1586488351279">
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1586764163988">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586488351279" />
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586764163988" />
     <state x="29" y="285" width="1736" height="781" key="DiffContextDialog" timestamp="1585108674699">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -301,10 +306,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="613" y="333" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585633645369" />
-    <state x="776" y="443" key="NewPhpFileDialog" timestamp="1586331488370">
+    <state x="776" y="443" key="NewPhpFileDialog" timestamp="1586773998793">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="776" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586331488370" />
+    <state x="776" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586773998793" />
     <state x="461" y="162" width="1347" height="716" key="SettingsEditor" timestamp="1586328134953">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -313,10 +318,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="814" y="418" key="WebDeployment.AddServerDialog.v.1/0.0.1920.1040@0.0.1920.1040" timestamp="1586417335443" />
-    <state x="640" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1586227523439">
+    <state x="640" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1586747772240">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="640" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586227523439" />
+    <state x="640" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586747772240" />
     <state x="511" y="256" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1585117456675">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -329,22 +334,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="876" y="250" key="com.jetbrains.plugins.remotesdk.ui.RemoteMappingsConfiguration/0.0.1920.1040@0.0.1920.1040" timestamp="1585115333022" />
-    <state x="739" y="206" width="1027" height="534" key="find.popup" timestamp="1586489284138">
+    <state x="577" y="291" width="1155" height="534" key="find.popup" timestamp="1586774887051">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="739" y="206" width="1027" height="534" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1586489284138" />
+    <state x="577" y="291" width="1155" height="534" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1586774887051" />
     <state x="208" y="316" width="587" height="539" key="ftp.server.browser" timestamp="1585117090496">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="208" y="316" width="587" height="539" key="ftp.server.browser/0.0.1920.1040@0.0.1920.1040" timestamp="1585117090496" />
-    <state x="616" y="240" key="run.anything.popup" timestamp="1586165288496">
+    <state x="616" y="240" key="run.anything.popup" timestamp="1586765232628">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1586165288496" />
-    <state x="961" y="400" width="672" height="678" key="search.everywhere.popup" timestamp="1586485872366">
+    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1586765232628" />
+    <state x="961" y="400" width="672" height="678" key="search.everywhere.popup" timestamp="1586760639676">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="961" y="400" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1586485872366" />
+    <state x="961" y="400" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1586760639676" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

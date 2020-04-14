@@ -3,7 +3,7 @@
 namespace App\Models\NovelData;
 
 use Illuminate\Database\Eloquent\Model;
-use Carbon\Carbon;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 
 class GrabOrdersPage extends Model
@@ -32,7 +32,7 @@ class GrabOrdersPage extends Model
         return $this->belongsToOrderPage->nickname ?? ($this->belongsToOrderPage->openid ?? '-');
     }
 
-    // 获取成本数据
+    // 停用
     public function getCostData()
     {
         $query = DB::connection('admin')->table('grab_books_page as p1')

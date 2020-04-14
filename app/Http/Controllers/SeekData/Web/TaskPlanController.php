@@ -44,16 +44,16 @@ class TaskPlanController extends Controller
     }
 
     // 计划任务添加
-    public function taskPlanAdd(Request $request,RoleUser $roleUser)
+    public function taskPlanAdd(Request $request)
     {
         try {
             $task_name = $request->input('task_name');
-            $platform_id = $request->input('pfname');
+            $platform_id = $request->input('pf_name');
             $squad = $request->input('squad');
             $description = $request->input('description');
             $novel_name = $request->input('novel_name');
             $novel_id = $request->input('novel_id');
-            $stat_cost = $request->input('stat_cost');
+            $task_config_id = $request->input('pfname');
             $key = $request->input('location');
 
             if ($squad == 0) {
@@ -66,6 +66,11 @@ class TaskPlanController extends Controller
                 $validatorError = json_encode($validatorError);
                 throw new \Exception($validatorError, 4002);
             }
+            if ($task_config_id == 0 || $task_config_id == '未配置') {
+                $validatorError = ['name' => '请选择任务类型，并在后台配置规则'];
+                $validatorError = json_encode($validatorError);
+                throw new \Exception($validatorError, 4002);
+            }
             DB::connection('admin')->table('task_list')->insert([
                 'account_config_id' => $squad,
                 'task_name' => $task_name,
@@ -74,7 +79,7 @@ class TaskPlanController extends Controller
                 'user_id' => Auth::id(),
                 'book_id' => $novel_id,
                 'book_name' => $novel_name,
-                'stat_cost' => $stat_cost,
+                'task_config_id' => $task_config_id,
                 'description' => $description
             ]);
 

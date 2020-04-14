@@ -31,6 +31,14 @@
                                         <br>
                                         <br>
                                         <div class="form-group">
+                                            <label for="input002" class="col-sm-2 control-label form-label">执行类：</label>
+                                            <div class="col-sm-2">
+                                                <input type="text" class="form-control" name="func"></div>
+                                            <span style="margin-left: 20px;line-height: 2px"><i style="color: red;margin-right:8px;">*</i> 对接采集系统</span>
+                                        </div>
+                                        <br>
+                                        <br>
+                                        <div class="form-group">
                                             <label for="input002" class="col-sm-2 control-label form-label">任务类型：</label>
                                             <div class="col-sm-2">
                                                 <select class="form-control" name="pf_name">
@@ -140,22 +148,19 @@
         let sel_num = 0;
         var infor_datas = [
             {
+                'HEADER':'{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.87 Safari/537.36"}',
                 'LOGIN_URL':'https://novel.zhangdu520.com/default/login',
                 'NEITUI_URL':'https://novel.zhangdu520.com/idispatch/list?type=1',
-                'WAITUI_URL':'https://novel.zhangdu520.com/dispatch/list?type=1',
-                'GUANZHU_URL':'https://novel.zhangdu520.com/dispatch/follow-list?type=3',
-                'NEITUI_API_URL':'https://novel.zhangdu520.com/idispatch/api',
-                'GUANZHU_API_URL':'https://novel.zhangdu520.com/dispatch/api',
-                'ORDER_PAGE_URL':'https://novel.zhangdu520.com/order/list',
-                'ORDER_API_URL':'https://novel.zhangdu520.com/order/api?action=getuserlist',
-                'JL_CREATIVE_URL':'https://ad.oceanengine.com/promote/creative/stat_list/?_signature=zAOc1AAgEAIgP-fmaPT-LcwDnMAAJJ.',
-                'HEAD_F_DATA':{"Content-Type": "application/x-www-form-urlencoded; charset=UTF-8", "Connection": "close"},
-                'HEADER':{"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.87 Safari/537.36"},
-                'USERNAME':'lgcm009',
-                'PASSWD':'lgcmzd888...',
                 'TARGET_URL':'http://admin.weijuli8.com/api/store/datas',
+                'WAITUI_URL':'https://novel.zhangdu520.com/dispatch/list?type=1',
+                'ACCOUNT_URL':'http://admin.weijuli8.com/api/book/get_account',
+                'ORDER_API_URL':'https://novel.zhangdu520.com/order/api?action=getuserlist',
+                'NEITUI_API_URL':'https://novel.zhangdu520.com/idispatch/api',
+                'ORDER_PAGE_URL':'https://novel.zhangdu520.com/order/list',
                 'TARGET_KEY_URL':'http://admin.weijuli8.com/api/book/get_keys?action=',
-                'ACCOUNT_URL':'http://admin.weijuli8.com/api/book/get_account'
+                'GUANZHU_API_URL':'https://novel.zhangdu520.com/dispatch/api',
+                'HEAD_F_DATA':{"Content-Type": "application/x-www-form-urlencoded; charset=UTF-8", "Connection": "close"},
+                "FENS_PAGE_URL":"https://novel.zhangdu520.com/user/list"
             }
         ];
 

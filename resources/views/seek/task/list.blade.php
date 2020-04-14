@@ -41,6 +41,7 @@
                                 <th>书籍名称</th>
                                 <th>采集位置</th>
                                 <th>采集id</th>
+                                <th>配置名称</th>
                                 <th>采集策略</th>
                                 <th>执行时间</th>
                                 <th>操作</th>
@@ -50,7 +51,7 @@
                             @forelse($list as $item)
                                 <tr>
                                     <td>{{$item->task_name}}</td>
-                                    <td>{{$item->task_id}}</td>
+                                    <td>{{$item->run_id}}</td>
                                     <td>{{$item->platform_nick}}</td>
                                     <td> {!! $item->status !!}</td>
 {{--                                    <td>-</td>--}}
@@ -58,8 +59,9 @@
                                     <td>{{$item->user_name}}</td>
 {{--                                    <td>{{$item->stat_cost}}</td>--}}
                                     <td>{{$item->book_name}}</td>
-                                    <td>{{array('1'=>'外推链接', '2'=>'被关注回复')[$item->key] ?? '-'}}</td>
+                                    <td>{{array('1'=>'外推链接', '2'=>'被关注回复','3'=>'订单明细','4'=>'粉丝明细')[$item->key] ?? '-'}}</td>
                                     <td>{{$item->book_id}}</td>
+                                    <td>{{$item->task_config_name}}</td>
                                     <td>{{array('1'=>'首次采集', '2'=>'更新采集')[$item->politic] ?? '-'}}</td>
                                     <td>{{$item->run_time}}</td>
                                     <td>

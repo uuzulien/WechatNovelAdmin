@@ -120,7 +120,8 @@
                                 <td>
                                     ￥{{$item['fens_cost']}}				</td>
                                 <td>
-                                    <a href="{{route('datas.novel_list',['start_at' => explode('~',$key)[0], 'end_at' => explode('~',$key)[1]])}}" class="btn btn-default">详情</a>
+                                    <a href="{{route('analyst.pay_trend',['start_at' => explode('~',$key)[0], 'end_at' => explode('~',$key)[1]])}}" class="btn btn-default">详情</a>
+{{--                                    <a href="{{route('datas.novel_list',['start_at' => explode('~',$key)[0], 'end_at' => explode('~',$key)[1]])}}" class="btn btn-default">详情</a>--}}
                                     <a href="javascript:void(0);" class="btn btn-warning">回本详情</a>
 
                                 </td>

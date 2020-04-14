@@ -37,6 +37,7 @@ class ConfigController extends Controller
         $platform_name = $request->input('pf_name');
         $msg = $request->input('msg');
         $datas = $request->input('datas');
+        $func = $request->input('func');
 
         if ($datas){
             $datas = $this->handData($datas);
@@ -47,6 +48,7 @@ class ConfigController extends Controller
             'pid' => $platform_name,
             'datas' => json_encode($datas),
             'msg' => $msg,
+            'func' => $func,
             'user_id' => Auth::id()
         ]);
 

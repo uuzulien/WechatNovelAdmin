@@ -57,8 +57,10 @@ Route::group(['prefix' => 'data_analyst', 'namespace' => 'Analyze'], function ()
     // 小说数据
     Route::get('/novel_list', 'NovelController@index')->name('analyst.novel_list');
 
-    // 投放数据分析
-    Route::get('/launch_list', 'AdvertController@index')->name('analyst.adv_list');
+    // 付费趋势
+    Route::get('/pay_trend', 'AdvertController@index')->name('analyst.pay_trend');
+
+    Route::get('/detail/pay_trend', 'AdvertController@detailPayTrend')->name('analyst.pay_trend_detail');
 
     // 成本数据分析
     Route::get('/cost_list', 'AdvertController@showCostList')->name('analyst.cost_list');
