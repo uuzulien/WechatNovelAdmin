@@ -3,6 +3,11 @@
         .remove:nth-child(2n + 1) {
             background: rgba(240,244,249,0.7);
         }
+        .wrap_label {
+            padding: 8px;
+            display: inline-block;
+            cursor: hand;
+        }
     </style>
 @section('breadcrumb')
     <li><a href="{{ route('home') }}">首页</a></li>
@@ -44,7 +49,9 @@
                                     <td>{{ $item['user_follow_amount']}}</td>
                                     <td class="col-sm-2">
                                         @foreach($item['books_name'] as $book)
-                                        <span class="label label-warning">{{$book}}</span>
+                                        <div class="wrap_label">
+                                            <span class="label label-warning" id="label">{{$book}}</span>
+                                        </div>
                                         @endforeach
                                     </td>
                                     <td>{{ $item['recharge_amounts'] }}</td>
@@ -55,7 +62,7 @@
                                         每日明细
                                         </span>
                                         <span class="btn btn-default data_analyze">
-                                        每日明细
+                                        编辑
                                         </span>
                                     </td>
                                 </tr>
@@ -73,17 +80,19 @@
 @endsection
 
 @section('js')
-<script>
+<script type="text/javascript">
     // 弹出框显示数据
     let datas = @json($list);
 
     // 弹出框点击事件
     $('.data_analyze').click(function() {
         var day = $(this).data("day");
+        console.log(day)
+        $('.popup_wrap').css('display','block');
+        $('.remove').remove();
         if(day) {
-            $('.popup_wrap').css('display','block');
             $(".popup_con").slideDown("slow");
-            $('.remove').remove();
+            particular();
             var data = datas[day]['data'],
                 total_money = 0;
             // 合计
@@ -117,7 +126,8 @@
                     </tr>`);
             }
         }else {
-            
+            $(".popup_con").slideDown("slow");
+            redact()
         }
     });
 </script>

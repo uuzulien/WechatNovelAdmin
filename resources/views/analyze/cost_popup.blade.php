@@ -41,6 +41,36 @@
         border: 1px solid #f0f0f0;
         font-size: 13px;
     }
+   .redact_div {
+        padding: 10px 0 0;
+        text-align: center;
+    }
+    .redact_sel {
+        width: 50%;
+        border-radius: 4px;
+        padding: 5px;
+        border: 1px solid #f0f0f0;
+    }
+    .redact_classname {
+        width: 10%;
+        text-align: right;
+        color: #656C78;
+        font-weight: 600;
+        display: inline-block;
+        margin-right: 10px;
+    }
+    .submit_wrap {
+        margin-top: 30px;
+        padding: 30px 160px 0 0;
+        text-align: right;
+    }
+    .submit {
+        background: #3FBAE4;
+        color: #fff;
+        padding: 5px 15px;
+        border: 0;
+        border-radius: 4px;
+    }
     @media screen and (max-width: 1378px) {
         .popup_con {
             width: 681px;
@@ -52,37 +82,76 @@
 
 </div>
 <div class="popup_con">
-    <div class="popup_title">
-        <span>数据分析</span>
-{{--        <span>派单人：微距离；</span>--}}
-{{--        <span>小说名：；</span>--}}
-{{--        <span style="color: red;">(数据采集非实时：最多可能延迟2个小时)</span>--}}
-    </div>
-    <div class="popup_table">
-        <table border="1" class="popup_table_con">
-            <tr>
-                <th>充值日期</th>
-                <th>投放总金额</th>
-                <th>充值总金额</th>
-                <th>当日充值金额</th>
-                <th>回本率</th>
-                <th>回本率上升百分比</th>
-            </tr>
-            <!-- <tr>
-                <td>${datas[i].pay_time}</td>
-                <td>￥${datas[i].put_total_money}</td>
-                <td>￥${datas[i].top_up_money}</td>
-                <td>￥${datas[i].today_moeny}</td>
-                <td>${datas[i].back_moeny}%</td>
-                <td>${datas[i].back_moeny_up_per}%</td>
-            </tr> -->
-        </table>
-    </div>
+
 </div>
 
 <script type="text/javascript">
+    // 下拉信息
+    var op_datas = [
+        {key: 1, name: '至尊'},
+        {key: 2, name: '深圳'},
+        {key: 3, name: '罗湖'}
+    ]
     $('.popup_wrap').click(function(event) {
         $('.popup_con').css('display','none');
         $('.popup_wrap').css('display','none');
     })
+    // 添加详细信息头部结构函数
+    function particular() {
+        $('.popup_con').empty();
+        $('.popup_con').append(`
+            <div class="popup_title">
+                    <span>数据分析</span>
+            {{--        <span>派单人：微距离；</span>--}}
+            {{--        <span>小说名：；</span>--}}
+            {{--        <span style="color: red;">(数据采集非实时：最多可能延迟2个小时)</span>--}}
+                </div>
+                <div class="popup_table">
+                    <table border="1" class="popup_table_con">
+                        <tr>
+                            <th>充值日期</th>
+                            <th>投放总金额</th>
+                            <th>充值总金额</th>
+                            <th>当日充值金额</th>
+                            <th>回本率</th>
+                            <th>回本率上升百分比</th>
+                        </tr>
+                    </table>
+                </div>
+        `)
+    };
+    //  添加头部编辑结构弹出框
+    function redact() {
+        $('.popup_con').empty();
+        $('.popup_con').append(`
+            <div class="popup_title">
+                <span>编辑</span>
+            </div>
+            <div class="redact_con">
+                <div class="redact_div">
+                    <span class="redact_classname">在投公众号</span>
+                    <input type="text" class="redact_sel" value="111111" style="background: #eee; color: #ccc;" readonly>
+                </div>
+                <div class="redact_div">
+                    <span class="redact_classname">平台</span>
+                    <input type="text" class="redact_sel" value="111111" style="background: #eee; color: #ccc;" readonly>
+                </div>
+                <div class="redact_div">
+                    <span class="redact_classname">小说名</span>
+                    <select name="" id="" class="redact_sel add_sel_op">
+                    </select>
+                </div>
+                <div class="redact_div">
+                    <span class="redact_classname">推广成本</span>
+                    <input type="text" class="redact_sel" required>
+                </div>
+            </div>
+            <div class="submit_wrap">
+                <button class="submit">提交</button>
+            </div>
+        `);
+        for(var i = 0; i < op_datas.length; i++) {
+            $('.add_sel_op').append(`<option value="${op_datas[i].key}">${op_datas[i].name}</option>`)
+        }
+    }
 </script>

@@ -1,5 +1,12 @@
 @extends('layouts.app')
-
+    <style type="text/css">
+        #pdr {
+            padding: 4px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            vertical-align: top;
+        }
+    </style>
 @section('breadcrumb')
     <li><a href="{{ route('home') }}">首页</a></li>
     <li>成本数据分析</li>
@@ -47,7 +54,7 @@
                             <div class="form-group">
                                 <h5>投放专员	</h5>
                                 <select name="pdr" id="pdr" style="width:300px;">
-                                    <option value="115" selected="">微距离001</option>
+                                    <!-- <option value="115" selected="">微距离001</option> -->
                                 </select>
                             </div>
 
@@ -141,5 +148,97 @@
 @endsection
 
 @section('js')
+    <script type="text/javascript">
+        var datas = [
+            {
+                name: '微距离',
+                key: 115,
+                datas: [
+                    {
+                        name: '陈庆明6月',
+                        key: 116,
+                        datas: [
+                            {
+                                name: '短频6月',
+                                key: 117
+                            },
+                            {
+                                name: '中频6月',
+                                key: 118
+                            },
+                            {
+                                name: '长频6月',
+                                key: 119
+                            },
+                            {
+                                name: '其他',
+                                key: 120
+                            }
+                        ]
+                    },
+                    {
+                        name: '信息流6月',
+                        key: 121,
+                        datas: [
+                            {
+                                name: '张迪蒲',
+                                key: 122
+                            },
+                            {
+                                name: '刘晓毅',
+                                key: 123
+                            },
+                            {
+                                name: '庆明',
+                                key: 124
+                            }
+                        ]
+                    },
+                    {
+                        name: '叶和青#',
+                        key: 125,
+                        datas: [
+                            {
+                                name: '叶和青001',
+                                key: 126
+                            },
+                            {
+                                name: '叶和青002',
+                                key: 127
+                            },
+                            {
+                                name: '叶和青003',
+                                key: 128
+                            }
+                        ]
+                    },
+                    {
+                        name: '小毅#',
+                        key: 129,
+                        datas: []
+                    },
+                    {
+                        name: '吴学琴#',
+                        key: 130,
+                        datas: []
+                    },
+                    {
+                        name: '蒋鑫鑫#',
+                        key: 131,
+                        datas: []
+                    }
+                ]
+            }
+        ]
 
+        for(var i = 0; i < datas.length; i++) {
+            $('#pdr').append(`<option value="${datas[i].key}">${datas[i].name}</>`);
+            for(var j = 0; j < datas[i].datas.length; j++) {
+                $('#pdr').append(`<option value="${datas[i].datas[j].key}">┖──${datas[i].datas[j].name}</>`);
+                for(var k = 0; k < datas[i].datas[j].datas.length; k++) {
+                    $('#pdr').append(`<option value="${datas[i].datas[j].datas[k].key}">┊╌╌┖──${datas[i].datas[j].datas[k].name}</>`);
+                }
+            }
+        }
+    </script>
 @endsection

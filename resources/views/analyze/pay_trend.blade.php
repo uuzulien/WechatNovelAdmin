@@ -6,7 +6,6 @@
         #total {
             background: rgb(208,233,198);
         }
-
     </style>
 @section('breadcrumb')
     <li><a href="{{ route('home') }}">首页</a></li>
@@ -72,13 +71,14 @@
 @endsection
 
 @section('js')
-<script>
+<script type="text/javascript">
     // 弹出框显示数据
     let datas = @json($list);
     // 弹出框点击事件
     $('.data_analyze').click(function() {
         var day = $(this).data("day");
         $('.popup_wrap').css('display','block');
+        particular();
         $(".popup_con").slideDown("slow");
         $('.remove').remove();
         // 合计
