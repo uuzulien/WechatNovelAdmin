@@ -41,6 +41,11 @@
         border: 1px solid #f0f0f0;
         font-size: 13px;
     }
+    @media screen and (max-width: 1378px) {
+        .popup_con {
+            width: 681px;
+        }
+    }
 </style>
 
 <div class="popup_wrap">

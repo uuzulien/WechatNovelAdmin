@@ -1,5 +1,9 @@
 @extends('layouts.app')
-
+    <style type="text/css">
+        .remove:nth-child(2n + 1) {
+            background: rgba(240,244,249,0.7);
+        }
+    </style>
 @section('breadcrumb')
     <li><a href="{{ route('home') }}">首页</a></li>
     <li>公众号付费趋势</li>
@@ -50,6 +54,9 @@
                                         <span class="btn btn-default data_analyze" data-day="{{ $key }}">
                                         每日明细
                                         </span>
+                                        <span class="btn btn-default data_analyze">
+                                        每日明细
+                                        </span>
                                     </td>
                                 </tr>
                             @empty
@@ -73,28 +80,44 @@
     // 弹出框点击事件
     $('.data_analyze').click(function() {
         var day = $(this).data("day");
-        $('.popup_wrap').css('display','block');
-        $(".popup_con").slideDown("slow");
-        $('.remove').remove();
-        var data = datas[day]['data'],
-            total_money = 0;
-        for(var i = 0; i < data.length; i++) {
-            console.log(data[i]);
-            total_money += data[i].today_moeny; // 累充
-            data[i].back_moeny = datas[day].stat_cost ? ((total_money / datas[day].stat_cost) * 100).toFixed(2) : 0; // 回本
-            if (i > 0){
-                data[i].back_moeny_up_per = (data[i].back_moeny - data[i-1].back_moeny).toFixed(2);
-            }else {
-                data[i].back_moeny_up_per = '0.00';
+        if(day) {
+            $('.popup_wrap').css('display','block');
+            $(".popup_con").slideDown("slow");
+            $('.remove').remove();
+            var data = datas[day]['data'],
+                total_money = 0;
+            // 合计
+            $('.popup_table_con').append(
+                `<tr  class="remove">
+                    <td>合计</td>
+                    <td>合计</td>
+                    <td>合计</td>
+                    <td>合计</td>
+                    <td>合计</td>
+                    <td>合计</td>
+                </tr>`
+            )
+            console.log(data)
+            for(var i = 0; i < data.length; i++) {
+                console.log(data[i]);
+                total_money += data[i].today_moeny; // 累充
+                data[i].back_moeny = datas[day].stat_cost ? ((total_money / datas[day].stat_cost) * 100).toFixed(2) : 0; // 回本
+                if (i > 0){
+                    data[i].back_moeny_up_per = (data[i].back_moeny - data[i-1].back_moeny).toFixed(2);
+                }else {
+                    data[i].back_moeny_up_per = '0.00';
+                }
+                $('.popup_table_con').append(`<tr class="remove">
+                        <td>第 ${data[i].pay_time} 天</td>
+                        <td>￥${datas[day].stat_cost}</td>
+                        <td>￥${total_money}</td>
+                        <td>￥${data[i].today_moeny}</td>
+                        <td>${data[i].back_moeny}%</td>
+                        <td>${data[i].back_moeny_up_per}%</td>
+                    </tr>`);
             }
-            $('.popup_table_con').append(`<tr class="remove">
-                    <td>第 ${data[i].pay_time} 天</td>
-                    <td>￥${datas[day].stat_cost}</td>
-                    <td>￥${total_money}</td>
-                    <td>￥${data[i].today_moeny}</td>
-                    <td>${data[i].back_moeny}%</td>
-                    <td>${data[i].back_moeny_up_per}%</td>
-                </tr>`);
+        }else {
+            
         }
     });
 </script>

@@ -1,5 +1,13 @@
 @extends('layouts.app')
+    <style type="text/css">
+        .remove:nth-child(2n) {
+            background: rgba(240,244,249,0.4);
+        }
+        #total {
+            background: rgb(208,233,198);
+        }
 
+    </style>
 @section('breadcrumb')
     <li><a href="{{ route('home') }}">首页</a></li>
     <li>每月付费趋势</li>
@@ -67,13 +75,23 @@
 <script>
     // 弹出框显示数据
     let datas = @json($list);
-
     // 弹出框点击事件
     $('.data_analyze').click(function() {
         var day = $(this).data("day");
         $('.popup_wrap').css('display','block');
         $(".popup_con").slideDown("slow");
         $('.remove').remove();
+        // 合计
+        $('.popup_table_con').append(
+            `<tr  class="remove" id="total">
+                <td>合计</td>
+                <td>合计</td>
+                <td>合计</td>
+                <td>合计</td>
+                <td>合计</td>
+                <td>合计</td>
+            </tr>`
+        )
         var data = datas[day]['data'],
             total_money = 0;
         for(var i = 0; i < data.length; i++) {
@@ -90,8 +108,8 @@
                     <td>￥${datas[day].stat_cost}</td>
                     <td>￥${total_money}</td>
                     <td>￥${data[i].today_moeny}</td>
-                    <td>${data[i].back_moeny}%</td>
-                    <td>${data[i].back_moeny_up_per}%</td>
+                    <td ${data[i].back_moeny > 100 ? "style='color: red;'" : ''}>${data[i].back_moeny}%</td>
+                    <td ${data[i].back_moeny_up_per > 0 ? "style='color: red;'" : ''}>${data[i].back_moeny_up_per}%</td>
                 </tr>`);
         }
     });
