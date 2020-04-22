@@ -84,13 +84,11 @@
                                         </span>
                                         </a>
                                         @endif
-                                        <a href="javascript:void(0)" data-toggle="modal" data-target="#add_const_{{$item->id}}">
-                                        <span class="btn btn-sm btn-primary">
-                                        编辑
-                                        </span>
-                                        </a>
+{{--                                        <span class="btn btn-sm btn-primary" data-toggle="modal" data-target="#add_const_{{$item->id}}">--}}
+{{--                                        编辑--}}
+{{--                                        </span>--}}
 
-                                        @include('datas.novel.add-const')
+{{--                                        @include('datas.novel.add-const')--}}
                                     </td>
                                 </tr>
                             @empty

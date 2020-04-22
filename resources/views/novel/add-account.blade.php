@@ -30,8 +30,8 @@
                                                 <option value="0">
                                                     请选择
                                                 </option>
-                                                @foreach($platforms as $item)
-                                                    <option value="{{$item->id}}" @if(request()->get('pt_type')==$item->id) selected @endif>{{$item->platform_name}}</option>
+                                                @foreach($platforms as $key => $value)
+                                                    <option value="{{$key}}" @if(request()->get('pt_type')==$key) selected @endif>{{$value}}</option>
                                                 @endforeach
                                             </select>
                                         </div>

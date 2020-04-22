@@ -34,8 +34,8 @@ class AccountManage extends Model
 
     public function searchList($data)
     {
-        $platform_name = $data['pfname'] ?? null;
-        $account = $data['account'] ?? null;
+        $key = $data['key'] ?? null;
+        $word = $data['word'] ?? null;
         $pid = $data['pt_type'] ?? null;
         $status = $data['status'] ?? null;
         $type = $data['type'] ?? null;
@@ -45,10 +45,11 @@ class AccountManage extends Model
 
         $groups = (new GroupUsers())->where('group_id', Auth::id())->get()->pluck('user_id')->push(Auth::id()); // 小组临时权限控制
 
-        $list = $query->when($platform_name, function ($q) use($platform_name) {
-                   $q->where('platform_name', $platform_name);
-                })->when($account, function ($q) use($account) {
-                    $q->where('account',$account);
+        $list = $query->when($word, function ($q) use($key,$word) {
+                    if ($key == 'pfname') {
+                        return $q->where('platform_nick','like', "%$word%");
+                    }
+                    return $q->where('account', 'like', "%$word%");
                 })->when($pid, function ($q) use($pid) {
                     $q->where('pid', $pid);
                 })->when($status, function ($q) use($status) {
@@ -57,7 +58,7 @@ class AccountManage extends Model
                     $q->whereHas('hasBelongsToAccountAdv', function ($q) use($type) {$q->where('type',$type);});
                 })->when(Auth::id()!= 1,function ($q) use($groups) {$q->whereIn('user_id', $groups);})->orderBy('created_at', 'asc')->paginate(15);
 
-        $platforms = (new PlatformManage())->where('type', '1')->get(['id','platform_name']);
+        $platforms = (new PlatformManage())->where('type', '1')->get(['id','platform_name'])->pluck('platform_name','id');
 
         return compact('list', 'platforms');
     }

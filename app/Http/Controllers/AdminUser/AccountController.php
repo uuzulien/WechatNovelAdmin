@@ -137,12 +137,10 @@ class AccountController extends Controller
             $user->name = $name;
             $user->email = $email;
             $user->role_id = $roles;
+            $user->group_id = Auth::id();
             $user->save();
             $id = $user->id;
-            DB::connection('admin')->table('group_users')->insert([
-                'user_id' => $user->id,
-                'group_id' => Auth::id()
-            ]);
+
             if ($id > 0) {
                 AdminLogHandle::write('编辑用户');
             } else {

@@ -47,9 +47,15 @@ Route::group(['prefix' => 'auth', 'namespace' => 'Auth'], function () {
 Route::group(['prefix' => 'account', 'namespace' => 'Account'], function () {
     // 小说平台账户配置列表
     Route::get('/novel_configs', 'NovelController@index')->name('account.novel_list');
+
     Route::post('/add_novel', 'NovelController@addAccount')->name('account.add_novel');
     // 投放平台账户配置列表
     Route::get('/launch_configs', 'AdvertController@index')->name('account.adv_list');
+    // 小说账号修改
+    Route::post('config/amend', 'NovelController@amdAccount')->name('account.config.amend');
+    // 小说账号删除
+    Route::delete('config/del/{id}', 'NovelController@deleteAccount')->name('account.config.del');
+
 });
 
 // 数据分析
@@ -59,8 +65,8 @@ Route::group(['prefix' => 'data_analyst', 'namespace' => 'Analyze'], function ()
 
     // 付费趋势
     Route::get('/pay_trend', 'AdvertController@index')->name('analyst.pay_trend');
-
-    Route::get('/detail/pay_trend', 'AdvertController@detailPayTrend')->name('analyst.pay_trend_detail');
+    // 公众号付费趋势
+    Route::get('/detail/pay_trend', 'AdvertController@detailPayTrend')->name('analyst.detail.pay_trend');
 
     // 成本数据分析
     Route::get('/cost_list', 'AdvertController@showCostList')->name('analyst.cost_list');
@@ -71,10 +77,10 @@ Route::group(['prefix' => 'datas_collect', 'namespace' => 'Datas'], function () 
     // 小说数据
     Route::get('/novel_list', 'NovelController@index')->name('datas.novel_list');
     Route::get('/novel_list/orders', 'NovelController@showBookIdOrdersList')->name('datas.bookid.order_list');
-    // 手动添加推广成本
-    Route::get('/novel_list/orders', 'NovelConnovel_listtroller@showBookIdOrdersList')->name('datas.bookid.order_list');
+    // 小说订单明细
+    Route::get('/novel_list/orders', 'NovelController@showBookIdOrdersList')->name('datas.bookid.order_list');
 
-    // 投放数据分析
+    // 手动添加推广成本
     Route::post('/launch/add_money', 'AdvertController@addMoney')->name('datas.adv.add_money');
 
     // 订单数据明细
@@ -98,4 +104,19 @@ Route::group(['prefix' => 'spy','namespace' => 'SeekData'], function () {
     Route::get('task/list', 'Web\TaskPlanController@taskPlanList')->name('spy.task.list');
     // 添加任务
     Route::post('task/add', 'Web\TaskPlanController@taskPlanAdd')->name('spy.task.add');
+});
+
+// 落地页模版
+Route::group(['prefix' => 'page','namespace' => 'TemPage'], function () {
+    // 广点通模版
+    Route::get('gdt/index', 'GDTController@index')->name('page.gdt.index');
+    // 模版配置
+    Route::get('template/index', 'GDTController@template')->name('page.gdt.config');
+    // 添加模板页面
+    Route::post('template/add', 'GDTController@addTemp')->name('temp.gdt.add');
+    // 添加广点通页面
+    Route::post('gdt/add', 'GDTController@addPage')->name('page.gdt.add');
+    // 删除模板页面
+    Route::delete('gdt/del/{id}', 'GDTController@deletePage')->name('page.gdt.del');
+
 });

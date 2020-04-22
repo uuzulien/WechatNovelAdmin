@@ -2,6 +2,7 @@
 
 namespace App\Models\Task;
 
+use App\Repositories\Auth\GroupPermission;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\NovelAdv\PlatformManage;
 use App\Models\NovelAdv\AccountManage;
@@ -65,7 +66,13 @@ class TaskList extends Model
 
     public function searchList()
     {
-        $query = self::with(['hasOnePlatformManage','hasOneAccountManage','hasOneAdminUsers','hasOneTaskConfigList'])->orderBy('created_at', 'asc');
+        $userGroup = (new GroupPermission())->userGroup();
+
+        $query = self::with(['hasOnePlatformManage','hasOneAccountManage','hasOneAdminUsers','hasOneTaskConfigList'])
+            ->whereHas('hasOneAccountManage', function ($query) use($userGroup){
+                    $query->whereIn('user_id', $userGroup);
+                })->orderBy('created_at', 'asc');
+
         $list = $query->paginate(15);
         return compact('list');
     }
@@ -81,8 +88,8 @@ class TaskList extends Model
 
         $configList = [];
         $FunArr = array(
-                '1' => [],
-                '2' => [],
+                '1' => ['get_book_page_list','for_sliced_book'],
+                '2' => ['get_book_page_list','for_sliced_book'],
                 '3' => ['for_order_page','for_sliced_order'],
                 '4' => ['for_fens_page']
             );
@@ -100,7 +107,9 @@ class TaskList extends Model
                 'run_id' => getrandstr() . '_' . $key,
                 'politic' => $item->politic,
                 'breakpoint' => $status ? $this->BreakPointAcq($item->id): null,
-                'id' => $item->id
+                'pid' => $item->pid,
+                'id' => $item->id,
+                'pt_id' => $item->account_config_id
             ];
 
             if ($config_data)

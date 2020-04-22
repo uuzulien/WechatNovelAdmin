@@ -152,7 +152,7 @@
                 'LOGIN_URL':'https://novel.zhangdu520.com/default/login',
                 'NEITUI_URL':'https://novel.zhangdu520.com/idispatch/list?type=1',
                 'TARGET_URL':'http://admin.weijuli8.com/api/store/datas',
-                'WAITUI_URL':'https://novel.zhangdu520.com/dispatch/list?type=1',
+                'WAITUI_URL':'https://novel.zhangdu520.com/dispatch/list?type=1&key={}',
                 'ACCOUNT_URL':'http://admin.weijuli8.com/api/book/get_account',
                 'ORDER_API_URL':'https://novel.zhangdu520.com/order/api?action=getuserlist',
                 'NEITUI_API_URL':'https://novel.zhangdu520.com/idispatch/api',
@@ -160,7 +160,8 @@
                 'TARGET_KEY_URL':'http://admin.weijuli8.com/api/book/get_keys?action=',
                 'GUANZHU_API_URL':'https://novel.zhangdu520.com/dispatch/api',
                 'HEAD_F_DATA':{"Content-Type": "application/x-www-form-urlencoded; charset=UTF-8", "Connection": "close"},
-                "FENS_PAGE_URL":"https://novel.zhangdu520.com/user/list"
+                "FENS_PAGE_URL":"https://novel.zhangdu520.com/user/list",
+                "GUANZHU_URL":'https://novel.zhangdu520.com/dispatch/follow-list?type=3&key={}'
             }
         ];
 

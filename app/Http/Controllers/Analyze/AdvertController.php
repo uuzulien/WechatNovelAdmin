@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 
 class AdvertController extends Controller
 {
+    // 每月趋势付费
     public function index(Request $request,GrabOrdersApi $grabOrdersApi)
     {
         $param = $request->all();
@@ -18,9 +19,10 @@ class AdvertController extends Controller
     }
 
     // 成本数据分析页面
-    public function showCostList(GrabOrdersApi $grabOrdersApi)
+    public function showCostList(GrabOrdersApi $grabOrdersApi,Request $request)
     {
-        $data = $grabOrdersApi->getCostData();
+        $param = $request->all();
+        $data = $grabOrdersApi->getCostData($param);
 
         return view('analyze.cost_list', $data);
     }

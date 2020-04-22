@@ -43,8 +43,18 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapSeekRoutes();
 
+        $this->mapGdtRoutes();
+
     }
 
+    /**
+     * 定义爬虫路由
+     */
+    protected function mapGdtRoutes()
+    {
+        Route::namespace($this->namespace)
+            ->group(base_path('routes/gdt.php'));
+    }
     /**
      * 定义爬虫路由
      */

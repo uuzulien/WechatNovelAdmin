@@ -26,11 +26,12 @@ class StoreDataController extends Controller
         $action = $contents['action'];
         $ancillary = $contents['attach'];
         $error = null;
+
         try{
             $this->save($action, $datas);
         }catch (\Exception $e) {
             $$error = $e;
-    }
+        }
 
 
         $query = new AcceptHandleLog();
@@ -69,6 +70,14 @@ class StoreDataController extends Controller
                 DB::connection('admin')->table('task_list')->where('id',$data['id'])->update(['status' => $data['status'],
                     'run_id' => $data['run_id'],
                     'run_time' => json_decode($data['run_time'])]);
+                break;
+            case 'account_config':
+                $data = $datas[0];
+                $id = DB::connection('admin')->table('account_config as ac')->join('task_list as tl',function ($q) {
+                    $q->on('tl.account_config_id', '=', 'ac.id');
+                })->select(['ac.id'])->where('tl.id',$data['id'])->first()->id;
+
+                DB::connection('admin')->table('account_config')->where('id', $id)->update(['status' => $data['status'], 'msg' => $data['msg']]);
                 break;
             default:
                 break;

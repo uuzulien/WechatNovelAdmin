@@ -42,7 +42,6 @@ class ConfigController extends Controller
         if ($datas){
             $datas = $this->handData($datas);
         }
-
         DB::connection('admin')->table('task_config_list')->insert([
             'name' => $task_name,
             'pid' => $platform_name,

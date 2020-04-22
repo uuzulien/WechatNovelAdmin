@@ -2,21 +2,56 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="81d01956-39f7-4d5c-84ff-470051b579b2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/analyze/cost_popup.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/analyze/pay_trend.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/TemPage/GDTController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Repositories/CarbonHand/HandleCore.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Repositories/Gdt/GdtFunc.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/gdt.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/summernote/font/summernote.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/summernote/summernote.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/gdt/heat-analytics-v0.0.24.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/gdt/lib.v5.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/gdt/loader.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/gdt/reporter-2.0.1.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/gdt/spa-page-network-1.6.0.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/gdt/website-h5-v1.58.1.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/summernote/summernote.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/popup/amend/account_config.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/popup/analyze/pay_trend.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/popup/analyze/trends.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/popup/data/add-const.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/popup/temPage/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/temPage/config.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/temPage/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/temPage/list.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/temPage/show_b.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/WechatNovelAdmin.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/WechatNovelAdmin.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WechatNovelAdmin.zip" beforeDir="false" afterPath="$PROJECT_DIR$/WechatNovelAdmin.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Account/NovelController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Account/NovelController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminUser/AccountController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminUser/AccountController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Analyze/AdvertController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Analyze/AdvertController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SeekData/Web/TaskPlanController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SeekData/Web/TaskPlanController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Datas/AdvertController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Datas/AdvertController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SeekData/Api/StoreDataController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SeekData/Api/StoreDataController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SeekData/Web/ConfigController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SeekData/Web/ConfigController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/AuthPermission.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/AuthPermission.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/NovelAdv/AccountManage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/NovelAdv/AccountManage.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/NovelData/GrabOrdersApi.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/NovelData/GrabOrdersApi.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/NovelData/GrabOrdersPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/NovelData/GrabOrdersPage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Task/TaskConfigList.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Task/TaskConfigList.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Task/TaskList.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Task/TaskList.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repositories/Auth/GroupPermission.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/Auth/GroupPermission.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/cache.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/cache.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library/helpers.php" beforeDir="false" afterPath="$PROJECT_DIR$/library/helpers.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/analyze/cost_list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/analyze/cost_list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/analyze/cost_popup.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/analyze/detail/pay_trend.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/analyze/detail/pay_trend.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/analyze/novel_list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/analyze/novel_list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/analyze/pay_trend.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/analyze/pay_trend.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/datas/novel/add-const.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/datas/novel/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/datas/novel/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/novel/add-account.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/novel/add-account.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/novel/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/novel/list.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/seek/config/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/seek/config/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/seek/config/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/seek/config/list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/seek/task/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/seek/task/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/seek/task/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/seek/task/list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/seek.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/seek.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -29,6 +64,14 @@
     <execution>
       <executable />
     </execution>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -149,7 +192,8 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../test/wechat_admins" />
+    <property name="last_opened_file_path" value="E:/BaiduNetdiskDownload/EnjoyCarWechat-master-12b0fec3324caa3906f05ade5bdcd418d366047d" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -161,13 +205,14 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\BaiduNetdiskDownload" />
+      <recent name="C:\Users\Administrator\Code\WechatNovelAdmin\resources\views\popup\data" />
+      <recent name="C:\Users\Administrator\Code\WechatNovelAdmin\resources\views\popup\analyze" />
       <recent name="C:\Users\Administrator\Code\WechatNovelAdmin\app\Http\Controllers\SeekData\Api" />
       <recent name="C:\Users\Administrator\Code\WechatNovelAdmin\app\Http\Controllers\SeekData\Web" />
-      <recent name="C:\Users\Administrator\Code\WechatNovelAdmin\resources\views\seek\config" />
-      <recent name="C:\Users\Administrator\Code\WechatNovelAdmin\resources\views\datas\novel" />
-      <recent name="C:\Users\Administrator\Code\WechatNovelAdmin\resources\views\datas\advert" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Administrator\Code\WechatNovelAdmin\public\css\summernote\font" />
       <recent name="C:\Users\Administrator\Code\WechatNovelAdmin\resources\views\datas" />
       <recent name="C:\Users\Administrator\Code\WechatNovelAdmin" />
       <recent name="C:\Users\Administrator\Code\WechatNovelAdmin\resources\views\launch" />
@@ -210,7 +255,12 @@
       <workItem from="1585880157318" duration="12011000" />
       <workItem from="1586138966909" duration="21648000" />
       <workItem from="1586227499796" duration="92314000" />
-      <workItem from="1586747427519" duration="25472000" />
+      <workItem from="1586747427519" duration="119075000" />
+      <workItem from="1587175355950" duration="1272000" />
+      <workItem from="1587177424092" duration="22067000" />
+      <workItem from="1587348320166" duration="13280000" />
+      <workItem from="1587366721324" duration="8493000" />
+      <workItem from="1587387426677" duration="21270000" />
     </task>
     <servers />
   </component>
@@ -242,18 +292,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="644" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585131347114" />
-    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1586764163988">
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1587113345432">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586764163988" />
-    <state x="29" y="285" width="1736" height="781" key="DiffContextDialog" timestamp="1585108674699">
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587113345432" />
+    <state x="29" y="285" width="1736" height="781" key="DiffContextDialog" timestamp="1587035971097">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="29" y="285" width="1736" height="781" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585108674699" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1586429564884">
+    <state x="29" y="285" width="1736" height="781" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587035971097" />
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1587388381386">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1586429564884" />
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1587388381386" />
     <state width="1877" height="348" key="GridCell.Tab.0.bottom" timestamp="1585117484395">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -302,14 +352,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="348" key="GridCell.Tab.2.right/0.0.1920.1040@0.0.1920.1040" timestamp="1585117484396" />
-    <state x="613" y="333" key="NewPhpClassDialog" timestamp="1585633645369">
+    <state x="613" y="333" key="NewPhpClassDialog" timestamp="1587022303123">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="613" y="333" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585633645369" />
-    <state x="776" y="443" key="NewPhpFileDialog" timestamp="1586773998793">
+    <state x="613" y="333" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587022303123" />
+    <state x="776" y="443" key="NewPhpFileDialog" timestamp="1587388316620">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="776" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586773998793" />
+    <state x="776" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587388316620" />
     <state x="461" y="162" width="1347" height="716" key="SettingsEditor" timestamp="1586328134953">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -318,10 +368,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="814" y="418" key="WebDeployment.AddServerDialog.v.1/0.0.1920.1040@0.0.1920.1040" timestamp="1586417335443" />
-    <state x="640" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1586747772240">
+    <state x="640" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1587387430356">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="640" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586747772240" />
+    <state x="640" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587387430356" />
     <state x="511" y="256" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1585117456675">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -334,22 +384,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="876" y="250" key="com.jetbrains.plugins.remotesdk.ui.RemoteMappingsConfiguration/0.0.1920.1040@0.0.1920.1040" timestamp="1585115333022" />
-    <state x="577" y="291" width="1155" height="534" key="find.popup" timestamp="1586774887051">
+    <state x="536" y="310" width="1155" height="600" key="find.popup" timestamp="1587461735841">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="577" y="291" width="1155" height="534" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1586774887051" />
+    <state x="536" y="310" width="1155" height="600" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1587461735841" />
     <state x="208" y="316" width="587" height="539" key="ftp.server.browser" timestamp="1585117090496">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="208" y="316" width="587" height="539" key="ftp.server.browser/0.0.1920.1040@0.0.1920.1040" timestamp="1585117090496" />
-    <state x="616" y="240" key="run.anything.popup" timestamp="1586765232628">
+    <state x="616" y="240" key="run.anything.popup" timestamp="1587178886774">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1586765232628" />
-    <state x="961" y="400" width="672" height="678" key="search.everywhere.popup" timestamp="1586760639676">
+    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1587178886774" />
+    <state x="961" y="400" width="672" height="678" key="search.everywhere.popup" timestamp="1587464620855">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="961" y="400" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1586760639676" />
+    <state x="961" y="400" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1587464620855" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
