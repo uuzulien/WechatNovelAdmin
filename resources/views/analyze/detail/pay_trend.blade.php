@@ -89,9 +89,11 @@
         var day = $(this).data("day");
         console.log(day)
         $('.popup_wrap').css('display','block');
+        // 删除所有 remove 元素
         $('.remove').remove();
         if(day) {
             $(".popup_con").slideDown("slow");
+            // 调用详细信息类弹出框头部信息
             particular();
             var data = datas[day]['data'],
                 total_money = 0;
@@ -127,6 +129,7 @@
             }
         }else {
             $(".popup_con").slideDown("slow");
+            // 调用编辑类弹出框头部信息
             redact()
         }
     });

@@ -4,6 +4,11 @@
             padding: 4px;
             border: 1px solid #ddd;
             border-radius: 5px;
+        }
+        .date_inp {
+            padding: 4px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
             vertical-align: top;
         }
     </style>
@@ -50,7 +55,10 @@
 
 
 {{--                            </div>--}}
-
+                            <div class="form-group">
+                                <h5>派单日期</h5>
+                                <input type="text" class="layui-input date_inp" style="width:200px;">
+                            </div>
                             <div class="form-group">
                                 <h5>投放专员	</h5>
                                 <select name="pdr" id="pdr" style="width:300px;">
@@ -149,6 +157,7 @@
 
 @section('js')
     <script type="text/javascript">
+
         var datas = [
             {
                 name: '微距离',
@@ -231,14 +240,15 @@
             }
         ]
 
-        for(var i = 0; i < datas.length; i++) {
-            $('#pdr').append(`<option value="${datas[i].key}">${datas[i].name}</>`);
-            for(var j = 0; j < datas[i].datas.length; j++) {
-                $('#pdr').append(`<option value="${datas[i].datas[j].key}">┖──${datas[i].datas[j].name}</>`);
-                for(var k = 0; k < datas[i].datas[j].datas.length; k++) {
-                    $('#pdr').append(`<option value="${datas[i].datas[j].datas[k].key}">┊╌╌┖──${datas[i].datas[j].datas[k].name}</>`);
-                }
-            }
-        }
+        $.each(datas, function (index, value) {
+            $('#pdr').append(`<option value="${value.key}">${value.name}</>`);
+            $.each(value.datas, function (index, value) {
+                $('#pdr').append(`<option value="${value.key}">┖──${value.name}</>`);
+                $.each(value.datas, function (index, value) {
+                    $('#pdr').append(`<option value="${value.key}">┊╌╌┖──${value.name}</>`);
+                })
+            })
+        })
+
     </script>
 @endsection

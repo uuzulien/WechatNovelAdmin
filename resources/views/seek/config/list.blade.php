@@ -82,8 +82,9 @@
                                     <td>{{$item->name}}</td>
                                     <td>{{$item->platform_name}}</td>
                                     <td>
-                                        <div class="data_click" title="点击查看更多" data-config="{{$item->config_data}}">
+                                        <div class="data_click" title="点击查看更多" onclick="config({{ $item->config_data }})">
 {{--                                            {!! $item->config_data !!}--}}
+                                            点击查看登录配置
 
                                         </div>
                                     </td>
@@ -122,6 +123,46 @@
 
 @section('js')
     <script type="text/javascript">
+        var datas =@json($list);
+        console.log(datas.data)
+
+
+
+
+
+        $('.pop_up_con_shut').click(function() {
+            $('.pop_up').css('display','none');
+        })
+
+        function config(e) {
+            // $.each(datas.data, function(i, val) {
+            //     console.log(val)
+            //     if(val.id == id) {
+            //         console.log(val.datas)
+
+            //         $('.pop_up').css('display','block');
+            //         $('.pop_up_con').empty();
+            //         for(data in val.datas) {
+            //             console.log(data)
+            //             var node = '<div style="color: #3AB54A;"><span style="color: #92278F;">"' + data + '"：</span>"' + val.datas[data] + '"</div>';
+            //             $('.pop_up_con').append(node);
+            //         }
+            //     }
+            // })
+            popup_datas = e;
+            $('.pop_up').css('display','block');
+            $('.pop_up_con').empty();
+            for(data in popup_datas) {
+                var node = '<div style="color: #3AB54A;"><span style="color: #92278F;">"' + data + '"：</span>"' + popup_datas[data] + '"</div>';
+                $('.pop_up_con').append(node);
+            }
+        }
+
+
+
+
+
+
         // var datas = {
         //     'LOGIN_URL':'https://novel.zhangdu520.com/default/login',
         //     'NEITUI_URL':'https://novel.zhangdu520.com/idispatch/list?type=1',
@@ -140,21 +181,19 @@
         //     'TARGET_KEY_URL':'http://admin.weijuli8.com/api/book/get_keys?action=',
         //     'ACCOUNT_URL':'http://admin.weijuli8.com/api/book/get_account'
         // };
-        let datas = $('.data_click').data('config');
-        for(data in datas) {
-            var node = "<div style='color: #3AB54A;'><span style='color: #92278F;'>" + data +"：</span>" + datas[data] + "</div>";
-            $('.data_click').append(node)
-        }
-        $('.data_click').click(function() {
-            $('.pop_up').css('display','block');
-            $('.pop_up_con').empty();
-            for(data in datas) {
-                var node = '<div style="color: #3AB54A;"><span style="color: #92278F;">"' + data + '"：</span>"' + datas[data] + '"</div>';
-                $('.pop_up_con').append(node)
-            }
-        });
-        $('.pop_up_con_shut').click(function() {
-            $('.pop_up').css('display','none')
-        })
+
+        // let datas = $('.data_click').data('config') , test;
+        // console.log(datas)
+
+        // for(data in datas) {
+        //     var node = "<div style='color: #3AB54A;'><span style='color: #92278F;'>" + data +"：</span>" + datas[data] + "</div>";
+        //     $('.data_click').append(node);
+        // }
+
+        // $('.data_click').click(function() {
+
+        // });
+
+
     </script>
 @endsection

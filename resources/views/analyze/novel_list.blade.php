@@ -1,5 +1,26 @@
 @extends('layouts.app')
-
+<style type="text/css">
+    .editor_wrap {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        /* z-index: 10; */
+        background: rgba(0,0,0,0.5);
+        display: none;
+    }
+    .editor_con {
+        background: #fff;
+        width: 740px;
+        /* height: 600px; */
+        padding: 20px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+</style>
 @section('breadcrumb')
     <li><a href="{{ route('home') }}">首页</a></li>
     <li>小说数据分析</li>
@@ -71,6 +92,9 @@
                             </tr>
                             </thead>
                             <tbody>
+                                <tr>
+                                    <td class="btn_editor">点击弹出编辑器</td>
+                                </tr>
                             @forelse($list as $item)
                                 <tr>
 {{--                                    <td>{{ $item['platform_nick'] }}</td>--}}
@@ -97,12 +121,56 @@
                     </div>
                 </div>
 {{--                <div class="page">{{$list->appends($app->request->all())->links()}}</div>--}}
+                <div class="test"></div>
             </div>
+            <!-- 弹窗---------------------------------富文本编辑器 -->
+            <div id="summernote"></div>
 
         </div>
     </div>
+
 @endsection
 
 @section('js')
+
+<script type="text/javascript">
+    // 富文本编辑器 js
+    var submit = function (context) {
+        var ui = $.summernote.ui;
+        // create button
+        var button = ui.button({
+            contents: '<i class="fa fa-child"/> submit',
+            tooltip: '提交按钮',
+            click: function () {
+                console.log($('#summernote').summernote('code'));    //  获取富文本编辑器的值
+                $('.test').append($('#summernote').summernote('code'));   //  富文本编辑器内容添加到指定标签
+                $('#summernote').summernote('code','');  //  清空富文本编辑框的内容
+                console.log('111111')
+            }
+        });
+        return button.render();   // return button as jquery object
+    }
+    $('#summernote').summernote({
+        placeholder: 'Hello',
+        minHeight: 200,
+        maxHeight: 300,
+        toolbar: [
+            ['style', ['style']],
+            ['font', ['bold', 'italic', 'underline', 'clear']],
+            ['fontname', ['fontname']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['height', ['height']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'hr']],
+            ['view', ['fullscreen', 'codeview']],
+            ['help', ['help']],
+            ['submit',['submit']], // 自定义按钮
+        ],
+        buttons: {
+            submit: submit
+        }
+    });
+</script>
 
 @endsection

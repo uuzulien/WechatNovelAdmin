@@ -10,8 +10,8 @@
         display: none;
     }
     .popup_con {
-        width: 50%;
-        height: 500px;
+        width: 800px;
+        height: 600px;
         background: #fff;
         position: fixed;
         top: 50%;
@@ -20,6 +20,7 @@
         font-size: 13px;
         display: none;
         z-index: 11;
+        overflow: hidden;
     }
     .popup_title {
         padding: 10px 20px;
@@ -29,15 +30,16 @@
         margin: 0 8px;
     }
     .popup_table {
-        height: 440px;
+        height: 550px;
         overflow: auto;
+        padding: 15px 0;
     }
     .popup_table table{
         width: 95%;
         margin: 0 auto;
     }
     .popup_table th,.popup_table td{
-        padding: 16px;
+        padding: 16px 20px;
         border: 1px solid #f0f0f0;
         font-size: 13px;
     }
@@ -71,11 +73,11 @@
         border: 0;
         border-radius: 4px;
     }
-    @media screen and (max-width: 1378px) {
+/*    @media screen and (max-width: 1378px) {
         .popup_con {
-            width: 681px;
+            width: 800px;
         }
-    }
+    } */
 </style>
 
 <div class="popup_wrap">
@@ -98,6 +100,7 @@
     })
     // 添加详细信息头部结构函数
     function particular() {
+        // 删除 popup_con 下所有子元素
         $('.popup_con').empty();
         $('.popup_con').append(`
             <div class="popup_title">
@@ -122,6 +125,7 @@
     };
     //  添加头部编辑结构弹出框
     function redact() {
+        // 删除 popup_con 下所有子元素
         $('.popup_con').empty();
         $('.popup_con').append(`
             <div class="popup_title">
@@ -150,8 +154,8 @@
                 <button class="submit">提交</button>
             </div>
         `);
-        for(var i = 0; i < op_datas.length; i++) {
-            $('.add_sel_op').append(`<option value="${op_datas[i].key}">${op_datas[i].name}</option>`)
-        }
+        $.each(op_datas, function(index, value) {
+            $('.add_sel_op').append(`<option value="${value.key}">${value.name}</option>`)
+        })
     }
 </script>
